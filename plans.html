@@ -1,0 +1,812 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>HomeBite | Homemade Food & Tiffin Marketplace</title>
+
+<script src="tailwind.js"></script>
+    <style>
+        /* --- Elegant Purple & Soft Amber Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1F2937; /* Dark Gray */
+            --color-secondary-text: #4B5563; /* Medium Gray */
+            --color-accent: #7E22CE; /* Elegant Purple */
+            --color-accent-light: #F59E0B; /* Soft Amber */
+            --color-border: #E5E7EB; 
+            --color-hover: #F3E8FF; /* Light Purple Hover */
+            --color-footer-bg: #111827; /* Very Dark Gray for neat contrast */
+            --color-footer-text: #F3F4F6;
+            --color-section-alt: #F9FAFB; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #111827;
+            --color-primary-text: #F9FAFB;
+            --color-secondary-text: #D1D5DB;
+            --color-accent: #A855F7; /* Bright Purple */
+            --color-accent-light: #FCD34D; /* Bright Amber */
+            --color-border: #374151; 
+            --color-hover: #374151;
+            --color-footer-bg: #030712;
+            --color-footer-text: #F9FAFB;
+            --color-section-alt: #0B1120;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-accent { background-color: var(--color-accent); }
+        .hover\:bg-accent:hover { background-color: var(--color-accent) !important; }
+        .hover\:bg-accent-dark:hover { background-color: #7E22CE !important; }
+        .bg-accent-light { background-color: var(--color-accent-light); }
+        .bg-section-alt { background-color: var(--color-section-alt); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+        .border-accent { border-color: var(--color-accent) !important; }
+
+        /* -- Typography Weight System -- */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #7E22CE 0%, #F59E0B 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #A855F7 !important; /* Purple Heading */
+        }
+        #main-footer .footer-link:hover {
+            color: #A855F7;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* -- Canonical Button System -- */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #7E22CE 0%, #4C1D95 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(126,34,206,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(126,34,206,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: var(--color-accent);
+            color: #000;
+        }
+        .btn-cta-white {
+            background: white;
+            color: var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 transition-colors duration-300 shadow-xl border-b border-border bg-background" id="main-header">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
+            <!-- Logo (Left) -->
+            <div class="flex-1 flex justify-start">
+                <a href="index.html" class="text-3xl font-serif font-extrabold tracking-tight flex items-center gap-2">    
+                    <i class="fa-solid fa-bowl-food" style="color: var(--color-accent);"></i>
+                    <span style="color: var(--color-accent);">HomeBite</span>
+                </a>
+            </div>
+
+            <!-- Nav Links (Center) -->
+            <div class="hidden xl:flex flex-none justify-center">
+                <div class="flex space-x-6 rtl:space-x-reverse text-primary-text font-medium">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+<a href="works.html" class="nav-link">About</a>
+<a href="menu.html" class="nav-link">Menu</a>
+<a href="chefs.html" class="nav-link">Chefs</a>
+<a href="plans.html" class="nav-link">Plans</a>
+<a href="orders.html" class="nav-link">Orders</a>
+<a href="contact.html" class="nav-link">Contact</a>
+ <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="dashboard-dropdown-btn">
+                            Dashboard
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="admin.html">Admin Dashboard</a>
+                            <a href="userdash.html">User Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Actions -->
+            <div class="flex-1 flex justify-end items-center">
+                <div class="hidden xl:flex items-center space-x-4">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+                        <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg>                    </button>
+                    <div class="flex items-center gap-3 ml-3">
+                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                        <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md whitespace-nowrap">Sign Up</a>
+                    </div>
+                </div>
+                <div class="xl:hidden flex items-center">
+                    <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+    <!-- 1. HERO SECTION (Plans Focus) -->
+<section class="relative bg-custom-gradient py-16 sm:py-24 overflow-hidden">
+    <!-- Decorative abstract background -->
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute -top-10 -right-10 w-64 h-64 bg-white rounded-full mix-blend-overlay blur-3xl"></div>
+        <div class="absolute bottom-0 left-20 w-48 h-48 bg-white rounded-full mix-blend-overlay blur-2xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white font-bold text-sm mb-4 backdrop-blur-sm border border-white/30">
+            No Lock-ins &bull; Pause Anytime
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white leading-tight mb-6">
+            Choose Your Perfect Tiffin Plan
+        </h1>
+        <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8">
+            Enjoy the comfort of daily home-cooked meals without the hassle of cooking or ordering every single day.
+        </p>
+    </div>
+</section>
+
+<!-- 2. WHY SUBSCRIBE (Value Props) -->
+<section class="py-12 bg-background border-b border-border">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-border">
+            <div class="py-4 md:px-6">
+                <div class="w-12 h-12 mx-auto bg-hover text-accent rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-pause"></i>
+                </div>
+                <h3 class="text-lg font-bold text-primary-text mb-2">Pause & Resume Anytime</h3>
+                <p class="text-sm text-secondary-text">Going out of town? Pause your tiffin directly from the dashboard and save your credits.</p>
+            </div>
+            <div class="py-4 md:px-6">
+                <div class="w-12 h-12 mx-auto bg-hover text-accent rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3 class="text-lg font-bold text-primary-text mb-2">Free Daily Delivery</h3>
+                <p class="text-sm text-secondary-text">All subscription plans include free priority delivery at your preferred time slot.</p>
+            </div>
+            <div class="py-4 md:px-6">
+                <div class="w-12 h-12 mx-auto bg-hover text-accent rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h3 class="text-lg font-bold text-primary-text mb-2">Health & Hygiene First</h3>
+                <p class="text-sm text-secondary-text">Less oil, no preservatives, and 100% freshly cooked meals from FSSAI-verified kitchens.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. PRICING PLANS (Integrated with your JS Toggle) -->
+<section class="py-16 sm:py-24 bg-section-alt transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Toggle Buttons (Hooks for your existing JS) -->
+        <div class="flex justify-center mb-16">
+            <div class="bg-background border border-border p-1.5 rounded-xl inline-flex shadow-sm">
+                <button id="btn-monthly" class="px-8 py-2.5 rounded-lg font-bold text-sm bg-[#7E22CE] text-white shadow-lg transition-all duration-300">Monthly Plans</button>
+                <button id="btn-seasonal" class="px-8 py-2.5 rounded-lg font-bold text-sm text-primary-text hover:text-accent transition-all duration-300">Seasonal Plans</button>
+            </div>
+        </div>
+
+        <!-- Monthly Plans Grid -->
+        <div id="monthly-plans" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            
+            <!-- Standard Plan -->
+            <div class="bg-background border border-border rounded-3xl p-8 shadow-sm flex flex-col hover:shadow-lg transition duration-300">
+                <h3 class="text-2xl font-bold text-primary-text mb-2">Standard Lunch</h3>
+                <p class="text-secondary-text text-sm mb-6 pb-6 border-b border-border">Perfect for office-goers seeking simple, homestyle food.</p>
+                <div class="flex items-end gap-1 mb-8">
+                    <span class="text-4xl font-bold text-primary-text">₹2,999</span>
+                    <span class="text-secondary-text font-medium pb-1">/mo</span>
+                </div>
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> 20 Meals (Mon-Fri delivery)</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> 3 Rotis, 1 Dal, 1 Dry Sabzi, Rice</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Fresh Salad</li>
+                </ul>
+                <a href="#" class="btn-outline text-center py-3.5 rounded-xl font-bold w-full">Subscribe Now</a>
+            </div>
+
+            <!-- Premium Plan (Highlighted) -->
+            <div class="bg-background border-2 border-accent rounded-3xl p-8 shadow-2xl relative flex flex-col transform lg:-translate-y-6 z-10">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-custom-gradient text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-md whitespace-nowrap">
+                    Most Popular Choice
+                </div>
+                <h3 class="text-2xl font-bold text-primary-text mb-2">Lunch + Dinner</h3>
+                <p class="text-secondary-text text-sm mb-6 pb-6 border-b border-border">Complete daily meal solution with weekend specials.</p>
+                <div class="flex items-end gap-1 mb-8">
+                    <span class="text-4xl font-bold text-accent">₹5,499</span>
+                    <span class="text-secondary-text font-medium pb-1">/mo</span>
+                </div>
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> 48 Meals (Mon-Sat delivery)</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Premium Curries & Paneer dishes</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Weekly Desserts & Buttermilk</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Priority Delivery Slots</li>
+                </ul>
+                <a href="#" class="btn-primary text-center py-3.5 rounded-xl font-bold w-full text-lg shadow-lg">Subscribe Now</a>
+            </div>
+
+            <!-- Health Plan -->
+            <div class="bg-background border border-border rounded-3xl p-8 shadow-sm flex flex-col hover:shadow-lg transition duration-300">
+                <h3 class="text-2xl font-bold text-primary-text mb-2">Keto & Macros</h3>
+                <p class="text-secondary-text text-sm mb-6 pb-6 border-b border-border">Calorie-counted meals for fitness enthusiasts.</p>
+                <div class="flex items-end gap-1 mb-8">
+                    <span class="text-4xl font-bold text-primary-text">₹4,200</span>
+                    <span class="text-secondary-text font-medium pb-1">/mo</span>
+                </div>
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> 20 Meals (Mon-Fri delivery)</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> High Protein, Low Carb options</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Zero refined oil & sugar</li>
+                </ul>
+                <a href="#" class="btn-outline text-center py-3.5 rounded-xl font-bold w-full">Subscribe Now</a>
+            </div>
+        </div>
+
+        <!-- Seasonal Plans Grid (Hidden by Default via your JS logic) -->
+        <div id="seasonal-plans" class="hidden grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            
+            <div class="bg-background border border-border rounded-3xl p-8 shadow-sm flex flex-col hover:shadow-lg transition duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-4 py-2 rounded-bl-2xl font-bold text-xs"><i class="fa-solid fa-snowflake mr-1"></i> Winter Spec</div>
+                <h3 class="text-2xl font-bold text-primary-text mb-2">Winter Immunity</h3>
+                <p class="text-secondary-text text-sm mb-6 pb-6 border-b border-border">Warm, immunity-boosting seasonal ingredients.</p>
+                <div class="flex items-end gap-1 mb-8">
+                    <span class="text-4xl font-bold text-primary-text">₹8,500</span>
+                    <span class="text-secondary-text font-medium pb-1">/3 mos</span>
+                </div>
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Winter greens (Sarson, Bathua)</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Millets (Bajra/Makki) instead of wheat</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Includes evening herbal soups</li>
+                </ul>
+                <a href="#" class="btn-outline text-center py-3.5 rounded-xl font-bold w-full">Select Plan</a>
+            </div>
+
+            <div class="bg-background border border-border rounded-3xl p-8 shadow-sm flex flex-col hover:shadow-lg transition duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-4 py-2 rounded-bl-2xl font-bold text-xs"><i class="fa-solid fa-sun mr-1"></i> Summer Spec</div>
+                <h3 class="text-2xl font-bold text-primary-text mb-2">Summer Cooling</h3>
+                <p class="text-secondary-text text-sm mb-6 pb-6 border-b border-border">Light, easily digestible meals for hot days.</p>
+                <div class="flex items-end gap-1 mb-8">
+                    <span class="text-4xl font-bold text-primary-text">₹8,200</span>
+                    <span class="text-secondary-text font-medium pb-1">/3 mos</span>
+                </div>
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Water-rich vegetables (Gourd, Cucumber)</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Less spices and zero heavy curries</li>
+                    <li class="flex items-start text-sm text-primary-text font-medium"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Complimentary Chaas/Buttermilk</li>
+                </ul>
+                <a href="#" class="btn-outline text-center py-3.5 rounded-xl font-bold w-full">Select Plan</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. COMPARISON TABLE -->
+<section class="py-16 sm:py-24 bg-background border-y border-border">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-serif font-bold text-primary-text mb-4">Why Tiffin Beats Food Apps</h2>
+            <p class="text-secondary-text text-lg">See the difference in your health and wallet.</p>
+        </div>
+        
+        <div class="overflow-x-auto bg-section-alt rounded-2xl border border-border">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-section-alt border-b border-border text-primary-text">
+                        <th class="p-4 sm:p-6 font-bold text-lg w-1/3">Feature</th>
+                        <th class="p-4 sm:p-6 font-bold text-lg w-1/3 bg-hover/50 text-accent border-x border-border">HomeBite Tiffin</th>
+                        <th class="p-4 sm:p-6 font-bold text-lg w-1/3 text-secondary-text">Regular Food Apps</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm sm:text-base divide-y divide-border">
+                    <tr>
+                        <td class="p-4 sm:p-6 text-primary-text font-medium">Monthly Cost (Lunch)</td>
+                        <td class="p-4 sm:p-6 text-primary-text bg-background font-bold border-x border-border">~₹3,000</td>
+                        <td class="p-4 sm:p-6 text-secondary-text">~₹7,500 <span class="text-xs">(₹250 x 30)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 text-primary-text font-medium">Health & Ingredients</td>
+                        <td class="p-4 sm:p-6 text-primary-text bg-background font-bold border-x border-border">Zero preservatives, low oil</td>
+                        <td class="p-4 sm:p-6 text-secondary-text">Commercial oils, artificial colors</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 text-primary-text font-medium">Delivery Fees</td>
+                        <td class="p-4 sm:p-6 text-primary-text bg-background font-bold border-x border-border text-green-600 dark:text-green-400">100% Free</td>
+                        <td class="p-4 sm:p-6 text-secondary-text">₹40 - ₹80 per order</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 text-primary-text font-medium">Ordering Process</td>
+                        <td class="p-4 sm:p-6 text-primary-text bg-background font-bold border-x border-border">Automated daily</td>
+                        <td class="p-4 sm:p-6 text-secondary-text">Manual ordering every day</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- 5. FREQUENTLY ASKED QUESTIONS -->
+<section class="py-16 sm:py-24 bg-section-alt">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-serif font-bold text-primary-text mb-4">Subscription FAQs</h2>
+            <p class="text-secondary-text text-lg">Got questions? We've got answers.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <details class="group bg-background border border-border rounded-xl shadow-sm open:shadow-md transition-all duration-300">
+                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-primary-text text-lg">
+                    <span>How does the Pause feature work?</span>
+                    <span class="transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down text-accent"></i>
+                    </span>
+                </summary>
+                <div class="text-secondary-text mt-2 px-5 pb-5 leading-relaxed text-sm">
+                    You can pause your subscription right from your dashboard up to 12 hours before your next scheduled delivery. The paused days are automatically added as credits to the end of your billing cycle.
+                </div>
+            </details>
+
+            <!-- FAQ 2 -->
+            <details class="group bg-background border border-border rounded-xl shadow-sm open:shadow-md transition-all duration-300">
+                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-primary-text text-lg">
+                    <span>Can I change my home chef mid-month?</span>
+                    <span class="transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down text-accent"></i>
+                    </span>
+                </summary>
+                <div class="text-secondary-text mt-2 px-5 pb-5 leading-relaxed text-sm">
+                    Yes! We understand that tastes change. You can switch to a different chef from the 1st of the following week. Your remaining balance will be adjusted against the new chef's pricing.
+                </div>
+            </details>
+
+            <!-- FAQ 3 -->
+            <details class="group bg-background border border-border rounded-xl shadow-sm open:shadow-md transition-all duration-300">
+                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-primary-text text-lg">
+                    <span>What happens if I miss a delivery?</span>
+                    <span class="transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down text-accent"></i>
+                    </span>
+                </summary>
+                <div class="text-secondary-text mt-2 px-5 pb-5 leading-relaxed text-sm">
+                    If you haven't paused your meal and our rider is unable to reach you after multiple attempts, the meal will be considered delivered. Please ensure you update your pause schedule to avoid food wastage.
+                </div>
+            </details>
+            
+            <!-- FAQ 4 -->
+            <details class="group bg-background border border-border rounded-xl shadow-sm open:shadow-md transition-all duration-300">
+                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-primary-text text-lg">
+                    <span>Is the packaging microwave safe?</span>
+                    <span class="transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down text-accent"></i>
+                    </span>
+                </summary>
+                <div class="text-secondary-text mt-2 px-5 pb-5 leading-relaxed text-sm">
+                    Yes. All our tiffins are packed in 100% food-grade, microwave-safe, and recyclable containers to ensure safety and convenience.
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- 6. BOTTOM CTA (Try a Sample) -->
+<section class="py-16 sm:py-24 bg-background">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-custom-gradient rounded-3xl p-10 sm:p-16 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+            <div class="text-center md:text-left z-10 flex-1">
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">Not ready to commit just yet?</h2>
+                <p class="text-white/90 text-lg mb-0 max-w-xl">
+                    We get it. You want to taste the food before subscribing for a month. Order a one-time trial meal from any chef today!
+                </p>
+            </div>
+            
+            <div class="z-10 flex-shrink-0">
+                <a href="menu.html" class="btn-cta-white px-8 py-4 rounded-xl font-bold shadow-lg text-center block w-full sm:w-auto text-lg">
+                    Order a Trial Meal
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+        </main>
+
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="text-2xl font-serif font-extrabold tracking-wide flex items-center gap-2">
+                    <i class="fa-solid fa-bowl-food" style="color: var(--color-accent);"></i>
+                    <span style="color: var(--color-accent);">HomeBite</span>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+<a href="works.html" class="block text-primary-text font-semibold text-lg py-2">About</a>
+<a href="menu.html" class="block text-primary-text font-semibold text-lg py-2">Menu</a>
+<a href="chefs.html" class="block text-primary-text font-semibold text-lg py-2">Chefs</a>
+<a href="plans.html" class="block text-primary-text font-semibold text-lg py-2">Plans</a>
+<a href="orders.html" class="block text-primary-text font-semibold text-lg py-2">Orders</a>
+<a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+<!-- Dashboard Dropdown -->
+<div>
+    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-dashboard-toggle">
+        Dashboard
+        <svg class="w-4 h-4 transform transition-transform duration-200" id="dashboard-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <div id="mobile-dashboard-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+        <a href="admin.html" class="block text-secondary-text hover:text-accent text-base py-1">Admin Dashboard</a>
+        <a href="userdash.html" class="block text-secondary-text hover:text-accent text-base py-1">User Dashboard</a>
+    </div>
+</div>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="text-3xl font-serif font-extrabold tracking-tight flex items-center gap-2" style="display:inline-flex; margin-bottom: 0.5rem;">    
+                        <i class="fa-solid fa-bowl-food" style="color: #A855F7;"></i>
+                        <span style="color: #A855F7;">HomeBite</span>
+                    </a>
+<p class="text-lg leading-relaxed max-w-sm !text-white-400">
+Connecting you with local home chefs for delicious, authentic homemade food and convenient tiffin subscriptions.</p>
+
+                      
+
+                      <div class="flex gap-6 mt-8">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Marketplace</h4>
+                   <ul class="space-y-4">
+    <li><a href="menu.html" class="footer-link">Weekly Menu</a></li>
+    <li><a href="chefs.html" class="footer-link">Home Chefs</a></li>
+    <li><a href="plans.html" class="footer-link">Subscription Plans</a></li>
+    <li><a href="orders.html" class="footer-link">Track Orders</a></li>
+</ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="works.html" class="footer-link">About</a></li>
+                        <li><a href="join.html" class="footer-link">Join as Home Chef</a></li>
+                        <li><a href="login.html" class="footer-link">Login Portal</a></li>
+                        <li><a href="chefs.html" class="footer-link">Find a Chef</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">&copy; 2026 HomeBite . All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+            setupAccordion('mobile-dashboard-toggle', 'mobile-dashboard-menu', 'dashboard-icon');
+
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                // Desktop Links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                // Desktop Dropdowns
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+                if (['admin.html', 'userdash.html'].includes(currentPath)) {
+                    document.getElementById('dashboard-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                // Mobile Links
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu') || link.closest('#mobile-dashboard-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                // Mobile Toggles
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+                if (['admin.html', 'userdash.html'].includes(currentPath)) {
+                    document.getElementById('mobile-dashboard-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+
+    const btnMonthly = document.getElementById("btn-monthly");
+    const btnSeasonal = document.getElementById("btn-seasonal");
+
+    const monthlyPlans = document.getElementById("monthly-plans");
+    const seasonalPlans = document.getElementById("seasonal-plans");
+
+    if (!btnMonthly || !btnSeasonal || !monthlyPlans || !seasonalPlans) return;
+
+    btnMonthly.addEventListener("click", function () {
+
+        btnMonthly.classList.add("bg-[#7E22CE]", "text-white", "shadow-lg");
+        btnMonthly.classList.remove("text-primary-text");
+
+        btnSeasonal.classList.remove("bg-[#7E22CE]", "text-white", "shadow-lg");
+        btnSeasonal.classList.add("text-primary-text");
+
+        monthlyPlans.classList.remove("hidden");
+        monthlyPlans.classList.add("grid");
+
+        seasonalPlans.classList.remove("grid");
+        seasonalPlans.classList.add("hidden");
+
+    });
+
+    btnSeasonal.addEventListener("click", function () {
+
+        btnSeasonal.classList.add("bg-[#7E22CE]", "text-white", "shadow-lg");
+        btnSeasonal.classList.remove("text-primary-text");
+
+        btnMonthly.classList.remove("bg-[#7E22CE]", "text-white", "shadow-lg");
+        btnMonthly.classList.add("text-primary-text");
+
+        seasonalPlans.classList.remove("hidden");
+        seasonalPlans.classList.add("grid");
+
+        monthlyPlans.classList.remove("grid");
+        monthlyPlans.classList.add("hidden");
+
+    });
+
+});
+    </script>
+</body>
+</html>
+
+
+
+
