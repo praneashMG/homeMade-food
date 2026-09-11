@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Page Not Found | HomeBite</title>
+
+    <script src="tailwind.js"></script>
+    <style>
+        /* ── Elegant Purple & Soft Amber Palette (same as main) ── */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1F2937;
+            --color-secondary-text: #4B5563;
+            --color-accent: #7E22CE;
+            --color-accent-light: #A855F7;
+            --color-border: #E5E7EB;
+            --color-hover: #F3E8FF;
+            --color-section-alt: #F9FAFB;
+        }
+        html[data-theme='dark'] {
+            --color-background: #111827;
+            --color-primary-text: #F9FAFB;
+            --color-secondary-text: #D1D5DB;
+            --color-accent: #A855F7;
+            --color-accent-light: #D8B4FE;
+            --color-border: #374151;
+            --color-hover: #374151;
+            --color-section-alt: #0B1120;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        /* Typography weight system (same) */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient (same) */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #7E22CE 0%, #A855F7 100%);
+        }
+
+        /* ── Canonical Button System (same) ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #7E22CE 0%, #4C1D95 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(126,34,206,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(126,34,206,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: var(--color-accent-light);
+            border-color: var(--color-accent-light);
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: var(--color-accent-light);
+            color: #111827;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Minimal header: only logo + right icons (no nav, no mobile menu, no login/signup) -->
+    <header class="sticky top-0 z-40 transition-colors duration-300 border-b border-border bg-background">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
+            <!-- Logo (left) -->
+            <div class="flex-1 flex justify-start">
+                <a href="index.html" class="text-3xl font-serif font-extrabold tracking-tight flex items-center gap-2">    
+                    <i class="fa-solid fa-bowl-food" style="color: var(--color-accent);"></i>
+                    <span style="color: var(--color-accent);">HomeBite</span>
+                </a>
+            </div>
+
+            <!-- Right icons only: theme + language toggle (no login/signup) -->
+            <div class="flex items-center space-x-2">
+                <button id="theme-toggle" class="text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+                <button id="lang-icon" class="text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main 404 content -->
+    <main class="flex-grow flex items-center justify-center px-4 py-16 bg-background">
+        <div class="container max-w-3xl mx-auto text-center">
+            <!-- Large 404 graphic with gradient accents -->
+            <div class="relative mb-8">
+                <div class="text-[10rem] sm:text-[12rem] lg:text-[14rem] font-serif font-extrabold leading-none bg-custom-gradient bg-clip-text text-transparent select-none">
+                    404
+                </div>
+                <!-- decorative floating icons -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center gap-6 sm:gap-12 pointer-events-none opacity-20">
+                    <i class="fa-solid fa-utensils text-5xl sm:text-7xl text-accent"></i>
+                    <i class="fa-solid fa-bowl-food text-5xl sm:text-7xl text-accent-light"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl font-serif font-bold text-primary-text mb-4">Page not found</h1>
+            <p class="text-lg sm:text-xl text-secondary-text max-w-xl mx-auto mb-10">
+                The page you're looking for doesn't exist or has been moved. Let's get you back to something delicious.
+            </p>
+
+            <!-- Action buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html" class="btn-primary px-8 py-3.5 rounded-xl font-bold shadow-lg w-full sm:w-auto text-center transition">
+                    <i class="fa-solid fa-house mr-2"></i>Back to Home
+                </a>
+                <a href="chefs.html" class="btn-outline px-8 py-3.5 rounded-xl font-bold w-full sm:w-auto text-center transition">
+                    <i class="fa-solid fa-utensils mr-2"></i>Browse Chefs
+                </a>
+            </div>
+            
+            <!-- subtle decorative line -->
+            <div class="mt-16 flex justify-center">
+                <div class="h-1 w-24 bg-gradient-to-r from-accent to-accent-light rounded-full opacity-50"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as main, but shorter? keep minimal to match the "no nav" request, but we keep footer because it's not nav) 
+         Actually, we'll keep a simplified footer with only the logo and copyright, no extra links. -->
+    <footer class="border-t border-border bg-background py-8 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bowl-food" style="color: var(--color-accent);"></i>
+                <span style="color: var(--color-accent);" class="text-xl font-serif font-extrabold tracking-tight">HomeBite</span>
+            </div>
+            <p class="text-sm text-secondary-text">© 2026 HomeBite. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // ----- Theme handling (same as main) -----
+            const themeToggles = [document.getElementById('theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            // init theme from storage
+            const storedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(storedTheme);
+
+            // ----- RTL / Language toggle (same) -----
+            const langToggle = document.getElementById('lang-icon');
+            langToggle?.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            });
+            // init direction
+            const storedLang = localStorage.getItem('language') || 'en';
+            html.setAttribute('dir', storedLang === 'ar' ? 'rtl' : 'ltr');
+        });
+    </script>
+</body>
+</html>
