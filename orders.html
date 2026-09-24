@@ -238,7 +238,7 @@
             
             <!-- Right Actions -->
             <div class="flex-1 flex justify-end items-center">
-                <div class="hidden xl:flex items-center space-x-4">
+                <div class="hidden xl:flex items-center space-x-4 pl-12 lg:pl-16">
                     <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
                         <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -247,8 +247,7 @@
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
 </svg>                    </button>
-                    <div class="flex items-center gap-3 ml-3">
-                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                    <div class="flex items-center ml-4">
                         <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md whitespace-nowrap">Sign Up</a>
                     </div>
                 </div>
@@ -306,7 +305,7 @@
                 </span>
                 Today's Delivery
             </h2>
-            <span class="bg-hover text-accent text-xs font-bold px-3 py-1 rounded-full border border-accent/20">
+            <span class="bg-hover text-accent dark:text-purple-300 text-xs font-bold px-3 py-1 rounded-full border border-accent/20">
                 #HB-8492
             </span>
         </div>
@@ -418,7 +417,7 @@
 
             <!-- Vacation/Pause Action -->
             <div class="bg-background border-2 border-hover rounded-3xl p-6 sm:p-8 flex flex-col justify-center items-center text-center shadow-sm">
-                <div class="w-16 h-16 bg-hover text-accent rounded-full flex items-center justify-center text-2xl mb-5 shadow-sm">
+                <div class="w-16 h-16 bg-hover text-accent dark:text-purple-300 rounded-full flex items-center justify-center text-2xl mb-5 shadow-sm">
                     <i class="fa-solid fa-plane-departure"></i>
                 </div>
                 <h4 class="text-lg font-bold text-primary-text mb-2">Going out of town?</h4>
@@ -438,7 +437,7 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
             <h2 class="text-2xl sm:text-3xl font-serif font-bold text-primary-text">Order History</h2>
-            <button class="bg-hover text-accent border border-accent/20 px-4 py-2 rounded-xl text-sm font-bold hover:bg-accent hover:text-white transition flex items-center gap-2">
+            <button class="bg-hover text-accent dark:text-purple-300 border border-accent/20 px-4 py-2 rounded-xl text-sm font-bold hover:bg-accent hover:text-white transition flex items-center gap-2">
                 <i class="fa-solid fa-filter"></i> Filter
             </button>
         </div>
@@ -459,7 +458,7 @@
                 <div class="flex items-center justify-between w-full sm:w-auto gap-8 border-t border-border sm:border-none pt-4 sm:pt-0 mt-2 sm:mt-0">
                     <div class="text-left sm:text-right">
                         <p class="font-extrabold text-primary-text text-lg">₹299</p>
-                        <span class="text-[10px] font-bold text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded uppercase tracking-wider">Delivered</span>
+                        <span class="text-[10px] font-bold text-green-800 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded uppercase tracking-wider">Delivered</span>
                     </div>
                     <button class="btn-primary px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap">
                         Reorder
@@ -642,9 +641,8 @@
                     <span class="text-xs mt-1 text-secondary-text">Theme</span>
                 </button>
             </div>
-            <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            <div class="flex mt-5 w-full">
+                <a href="signup.html" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
             </div>
         </div>
     </div>

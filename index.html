@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -236,7 +236,7 @@
             
             <!-- Right Actions -->
             <div class="flex-1 flex justify-end items-center">
-                <div class="hidden xl:flex items-center space-x-4">
+                <div class="hidden xl:flex items-center space-x-4 pl-12 lg:pl-16">
                     <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
                         <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -245,8 +245,7 @@
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
 </svg>                    </button>
-                    <div class="flex items-center gap-3 ml-3">
-                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                    <div class="flex items-center ml-4">
                         <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md whitespace-nowrap">Sign Up</a>
                     </div>
                 </div>
@@ -259,8 +258,10 @@
 
     <main class="flex-grow">
     <!-- 1. HERO SECTION -->
-<section class="relative bg-custom-gradient overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 min-h-[calc(100vh-70px)]">
+<section class="relative bg-custom-gradient overflow-hidden flex items-center min-h-[60vh]">
+    <div class="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-accent/50 opacity-50"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 w-full relative z-10">
         <div class="flex-1 text-center lg:text-left z-10">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white leading-tight mb-6">
                 Authentic Homemade Food, <br class="hidden lg:block"/> Delivered to You
@@ -272,7 +273,7 @@
                 <a href="#chefs" class="btn-cta-white px-8 py-3.5 rounded-xl font-bold shadow-lg w-full sm:w-auto text-center">
                     Explore Menu
                 </a>
-                <a href="signup.html" class="px-8 py-3.5 rounded-xl font-bold text-white border-2 border-white hover:bg-white hover:text-accent transition duration-300 w-full sm:w-auto text-center">
+                <a href="signup.html" class="px-8 py-3.5 rounded-xl font-bold text-white border-2 border-white hover:bg-white hover:text-purple-700 transition duration-300 w-full sm:w-auto text-center">
                     Subscribe to Tiffin
                 </a>
             </div>
@@ -380,7 +381,7 @@
             <!-- Chef Profile 1 -->
             <div class="border border-border rounded-2xl p-6 bg-background shadow-sm hover:shadow-lg transition duration-300 flex flex-col h-full">
                 <div class="flex items-center gap-4 mb-4">
-                    <img src="https://ui-avatars.com/api/?name=Anita+Sharma&background=F59E0B&color=fff" alt="Chef Anita" class="w-16 h-16 rounded-full shadow-sm" />
+                    <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Chef Anita" class="w-16 h-16 rounded-full shadow-sm" />
                     <div>
                         <h3 class="text-xl font-bold text-primary-text">Anita's Kitchen</h3>
                         <div class="flex items-center text-sm text-accent-light">
@@ -391,8 +392,8 @@
                 </div>
                 <p class="text-secondary-text mb-4 text-sm line-clamp-2">Specializing in authentic Punjabi curries and whole wheat rotis. 100% vegetarian.</p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-hover text-accent text-xs font-bold rounded-full">North Indian</span>
-                    <span class="px-3 py-1 bg-hover text-accent text-xs font-bold rounded-full">Veg</span>
+                    <span class="px-3 py-1 bg-hover text-accent dark:text-purple-300 text-xs font-bold rounded-full">North Indian</span>
+                    <span class="px-3 py-1 bg-hover text-accent dark:text-purple-300 text-xs font-bold rounded-full">Veg</span>
                 </div>
                 <a href="#" class="btn-outline block w-full text-center py-2.5 rounded-xl font-bold mt-auto">View Menu</a>
             </div>
@@ -400,7 +401,7 @@
             <!-- Chef Profile 2 -->
             <div class="border border-border rounded-2xl p-6 bg-background shadow-sm hover:shadow-lg transition duration-300 flex flex-col h-full">
                 <div class="flex items-center gap-4 mb-4">
-                    <img src="https://ui-avatars.com/api/?name=Priya+Reddy&background=7E22CE&color=fff" alt="Chef Priya" class="w-16 h-16 rounded-full shadow-sm" />
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Chef Priya" class="w-16 h-16 rounded-full shadow-sm" />
                     <div>
                         <h3 class="text-xl font-bold text-primary-text">Priya's Tiffin</h3>
                         <div class="flex items-center text-sm text-accent-light">
@@ -411,8 +412,8 @@
                 </div>
                 <p class="text-secondary-text mb-4 text-sm line-clamp-2">Homestyle Andhra meals and healthy millet-based breakfasts.</p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-hover text-accent text-xs font-bold rounded-full">South Indian</span>
-                    <span class="px-3 py-1 bg-hover text-accent text-xs font-bold rounded-full">Healthy</span>
+                    <span class="px-3 py-1 bg-hover text-accent dark:text-purple-300 text-xs font-bold rounded-full">South Indian</span>
+                    <span class="px-3 py-1 bg-hover text-accent dark:text-purple-300 text-xs font-bold rounded-full">Healthy</span>
                 </div>
                 <a href="#" class="btn-outline block w-full text-center py-2.5 rounded-xl font-bold mt-auto">View Menu</a>
             </div>
@@ -420,7 +421,7 @@
             <!-- Chef Profile 3 -->
             <div class="border border-border rounded-2xl p-6 bg-background shadow-sm hover:shadow-lg transition duration-300 flex flex-col h-full">
                 <div class="flex items-center gap-4 mb-4">
-                    <img src="https://ui-avatars.com/api/?name=Rohan+Das&background=F59E0B&color=fff" alt="Chef Rohan" class="w-16 h-16 rounded-full shadow-sm" />
+                    <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Chef Rohan" class="w-16 h-16 rounded-full shadow-sm" />
                     <div>
                         <h3 class="text-xl font-bold text-primary-text">Bengali Bites</h3>
                         <div class="flex items-center text-sm text-accent-light">
@@ -431,8 +432,8 @@
                 </div>
                 <p class="text-secondary-text mb-4 text-sm line-clamp-2">Traditional fish curries, mustard preparations, and weekend biryanis.</p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-hover text-accent text-xs font-bold rounded-full">Bengali</span>
-                    <span class="px-3 py-1 bg-hover text-accent text-xs font-bold rounded-full">Non-Veg</span>
+                    <span class="px-3 py-1 bg-hover text-accent dark:text-purple-300 text-xs font-bold rounded-full">Bengali</span>
+                    <span class="px-3 py-1 bg-hover text-accent dark:text-purple-300 text-xs font-bold rounded-full">Non-Veg</span>
                 </div>
                 <a href="#" class="btn-outline block w-full text-center py-2.5 rounded-xl font-bold mt-auto">View Menu</a>
             </div>
@@ -583,9 +584,8 @@
                     <span class="text-xs mt-1 text-secondary-text">Theme</span>
                 </button>
             </div>
-            <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            <div class="flex mt-5 w-full">
+                <a href="signup.html" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
             </div>
         </div>
     </div>

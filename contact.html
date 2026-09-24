@@ -236,7 +236,7 @@
             
             <!-- Right Actions -->
             <div class="flex-1 flex justify-end items-center">
-                <div class="hidden xl:flex items-center space-x-4">
+                <div class="hidden xl:flex items-center space-x-4 pl-12 lg:pl-16">
                     <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
                         <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -245,8 +245,7 @@
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
 </svg>                    </button>
-                    <div class="flex items-center gap-3 ml-3">
-                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                    <div class="flex items-center ml-4">
                         <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md whitespace-nowrap">Sign Up</a>
                     </div>
                 </div>
@@ -259,14 +258,12 @@
 
     <main class="flex-grow">
     <!-- 1. HERO SECTION (Purple Gradient) -->
-<section class="bg-custom-gradient py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-    <!-- Abstract background elements -->
-    <div class="absolute inset-0 opacity-20 pointer-events-none">
-        <div class="absolute -top-12 -left-12 w-48 h-48 bg-white rounded-full mix-blend-overlay blur-2xl"></div>
-        <div class="absolute bottom-0 right-10 w-72 h-72 bg-white rounded-full mix-blend-overlay blur-3xl"></div>
-    </div>
+<section class="bg-custom-gradient py-16 relative overflow-hidden min-h-[60vh] flex items-center">
+    <!-- Background image -->
+    <div class="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-accent/50 opacity-50"></div>
     
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <div class="container mx-auto w-full px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <span class="inline-block bg-white/20 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 backdrop-blur-sm border border-white/30">
             We are here for you
         </span>
@@ -638,7 +635,7 @@
 
         <!-- Section Heading -->
         <div class="text-center mb-10 sm:mb-12">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-hover text-accent text-sm font-semibold">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-hover text-accent dark:text-purple-300 text-sm font-semibold">
                 <i class="fa-solid fa-location-dot"></i>
                 Find Us
             </span>
@@ -662,7 +659,7 @@
                 <!-- Icon + Label -->
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl
-                                bg-hover text-accent flex items-center justify-center
+                                bg-hover text-accent dark:text-purple-300 flex items-center justify-center
                                 text-2xl shadow-sm">
                         <i class="fa-solid fa-building"></i>
                     </div>
@@ -692,7 +689,7 @@
 
                 <!-- Address -->
                 <div class="flex items-start gap-4 mb-8">
-                    <div class="w-10 h-10 rounded-xl bg-hover text-accent
+                    <div class="w-10 h-10 rounded-xl bg-hover text-accent dark:text-purple-300
                                 flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
@@ -834,9 +831,8 @@
                     <span class="text-xs mt-1 text-secondary-text">Theme</span>
                 </button>
             </div>
-            <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            <div class="flex mt-5 w-full">
+                <a href="signup.html" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
             </div>
         </div>
     </div>

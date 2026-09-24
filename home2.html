@@ -237,7 +237,7 @@
             
             <!-- Right Actions -->
             <div class="flex-1 flex justify-end items-center">
-                <div class="hidden xl:flex items-center space-x-4">
+                <div class="hidden xl:flex items-center space-x-4 pl-12 lg:pl-16">
                     <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
                         <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -246,8 +246,7 @@
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
 </svg>                    </button>
-                    <div class="flex items-center gap-3 ml-3">
-                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                    <div class="flex items-center ml-4">
                         <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md whitespace-nowrap">Sign Up</a>
                     </div>
                 </div>
@@ -260,7 +259,7 @@
 
     <main class="flex-grow">
     <!-- 1. HERO SECTION (Search-Focused & Centered) -->
-<section class="relative bg-gray-900 border-b border-border overflow-hidden pt-20 pb-24 sm:pt-28 sm:pb-32">
+<section class="relative bg-gray-900 border-b border-border overflow-hidden pt-20 pb-24 sm:pt-28 sm:pb-32 min-h-[60vh] flex items-center">
     <!-- Hero Background Image -->
     <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <img src="assets/a1.jpg" alt="Hero Background" class="w-full h-full object-cover" />
@@ -274,7 +273,7 @@
         <div class="absolute top-[40%] -right-[10%] w-[40%] h-[60%] rounded-full bg-accent-light blur-[120px]"></div>
     </div>
     
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative w-full">
         <span class="inline-block py-1 px-3 rounded-full bg-white/10 text-white font-bold text-sm mb-6 border border-white/20 backdrop-blur-sm">
             <i class="fa-solid fa-leaf mr-2 text-accent-light"></i>100% Home-Cooked Daily Meals
         </span>
@@ -395,7 +394,7 @@
                 
                 <div class="space-y-6">
                     <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-hover text-accent flex-shrink-0 flex items-center justify-center text-xl shadow-sm">
+                        <div class="w-12 h-12 rounded-xl bg-hover text-accent dark:text-purple-300 flex-shrink-0 flex items-center justify-center text-xl shadow-sm">
                             <i class="fa-solid fa-wallet"></i>
                         </div>
                         <div>
@@ -404,7 +403,7 @@
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-hover text-accent flex-shrink-0 flex items-center justify-center text-xl shadow-sm">
+                        <div class="w-12 h-12 rounded-xl bg-hover text-accent dark:text-purple-300 flex-shrink-0 flex items-center justify-center text-xl shadow-sm">
                             <i class="fa-solid fa-clock"></i>
                         </div>
                         <div>
@@ -413,7 +412,7 @@
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-hover text-accent flex-shrink-0 flex items-center justify-center text-xl shadow-sm">
+                        <div class="w-12 h-12 rounded-xl bg-hover text-accent dark:text-purple-300 flex-shrink-0 flex items-center justify-center text-xl shadow-sm">
                             <i class="fa-solid fa-calendar-check"></i>
                         </div>
                         <div>
@@ -444,7 +443,7 @@
                 </div>
                 <p class="text-primary-text italic mb-6 flex-grow">"As a software developer, I never have time to cook. HomeBite's monthly tiffin from Anita's Kitchen tastes exactly like my mother's food. The rotis are incredibly soft!"</p>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold">P</div>
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Rithika P" class="w-10 h-10 rounded-full object-cover shadow-sm" />
                     <div>
                         <h5 class="text-sm font-bold text-primary-text">Rithika P</h5>
                         <p class="text-xs text-secondary-text">Monthly Subscriber</p>
@@ -459,7 +458,7 @@
                 </div>
                 <p class="text-primary-text italic mb-6 flex-grow">"The keto diet plan from FitBite is a lifesaver. I lost 3 kgs in a month just by switching my office lunch to their tiffin service. Highly recommended!"</p>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-accent-light text-white flex items-center justify-center font-bold">S</div>
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sneha R." class="w-10 h-10 rounded-full object-cover shadow-sm" />
                     <div>
                         <h5 class="text-sm font-bold text-primary-text">Sneha R.</h5>
                         <p class="text-xs text-secondary-text">Health Plan Subscriber</p>
@@ -474,7 +473,7 @@
                 </div>
                 <p class="text-primary-text italic mb-6 flex-grow">"Great packaging and always on time. I love that I can pause the subscription on weekends directly from the dashboard. Very seamless experience."</p>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold">V</div>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Vikram Singh" class="w-10 h-10 rounded-full object-cover shadow-sm" />
                     <div>
                         <h5 class="text-sm font-bold text-primary-text">Vikram Singh</h5>
                         <p class="text-xs text-secondary-text">Weekly Subscriber</p>
@@ -501,7 +500,7 @@
                     <a href="signup.html" class="btn-cta-white px-8 py-3.5 rounded-xl font-bold shadow-lg text-center whitespace-nowrap">
                         Setup Your Tiffin
                     </a>
-                    <a href="menu.html" class="px-8 py-3.5 rounded-xl font-bold text-white border-2 border-white hover:bg-white hover:text-accent transition duration-300 text-center whitespace-nowrap">
+                    <a href="menu.html" class="px-8 py-3.5 rounded-xl font-bold text-white border-2 border-white hover:bg-white hover:text-purple-700 transition duration-300 text-center whitespace-nowrap">
                         View Sample Menus
                     </a>
                 </div>
@@ -569,9 +568,8 @@
                     <span class="text-xs mt-1 text-secondary-text">Theme</span>
                 </button>
             </div>
-            <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            <div class="flex mt-5 w-full">
+                <a href="signup.html" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
             </div>
         </div>
     </div>
